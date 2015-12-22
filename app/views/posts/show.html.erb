@@ -1,0 +1,40 @@
+<body style="background-color:aquamarine ;">
+
+<h3>Post</h3>
+<p>
+  <strong>Title:</strong>
+  <%= @post.title %>
+</p>
+
+<p>
+  <strong>Content:</strong>
+  <%= @post.content %>
+</p>
+
+<p>
+  <strong>Category:</strong>
+  <%= @post.category %>
+</p>
+
+<%= link_to 'Edit', edit_post_path(@post) %> |
+<%= link_to 'Back', posts_path %>
+
+<hr/>
+<strong>Comments</strong>
+<% @comments.each do |comment| %>
+	<div>
+		<strong>Name: </strong>
+		<%= comment.name %>
+		<br />
+		<strong>Comment: </strong>
+		<%= comment.body %>
+		<p>
+			<%= link_to 'Delete', comments_path(comment), method: :delete, data:{ confirm: 'Are you sure?' } %>
+		</p>
+	</div>
+<% end %>
+<%= render 'comments/form' %>
+
+
+
+
